@@ -18,6 +18,7 @@ export interface Order {
   status: OrderStatus;
   customerName: string;
   total: number;
+  estimatedPrepTime?: number;
 }
 
 interface OrdersState {
@@ -49,19 +50,28 @@ export const useOrdersStore = create<OrdersState>((set, get) => ({
     set((state) => {
       const order = state.orders.find((o) => o.id === orderId);
       if (!order) return state;
-      
+
       const updatedOrder = { ...order, status: 'accepted' as OrderStatus };
       const newAccepted = [updatedOrder, ...state.acceptedOrders];
       const newPending = state.orders.filter((o) => o.id !== orderId);
-      
-      // Calculate new prep time based on accepted orders
-      let prepTime = 15;
-      if (newAccepted.length >= 7) {
-        prepTime = 30;
+
+      // Calculate new prep time based on:
+      // 1. Base prep time from the order items (estimatedPrepTime)
+      // 2. Kitchen load multiplier based on number of accepted orders
+      const basePrepTime = order.estimatedPrepTime || 15;
+      let prepTime = basePrepTime;
+
+      // Add kitchen load factor
+      if (newAccepted.length >= 10) {
+        prepTime = Math.min(basePrepTime + 20, 45); // Max 45 min
+      } else if (newAccepted.length >= 7) {
+        prepTime = basePrepTime + 15;
       } else if (newAccepted.length >= 4) {
-        prepTime = 20;
+        prepTime = basePrepTime + 10;
+      } else if (newAccepted.length >= 2) {
+        prepTime = basePrepTime + 5;
       }
-      
+
       return {
         orders: newPending,
         acceptedOrders: newAccepted,
@@ -87,9 +97,18 @@ export const useOrdersStore = create<OrdersState>((set, get) => ({
   calculatePrepTime: () => {
     const { acceptedOrders, basePrepTime } = get();
     const count = acceptedOrders.length;
-    
-    if (count >= 7) return 30;
-    if (count >= 4) return 20;
-    return basePrepTime;
+
+    // If no orders, return base time
+    if (count === 0) return basePrepTime;
+
+    // Get the highest prep time from current orders
+    const maxOrderPrepTime = Math.max(...acceptedOrders.map(o => o.estimatedPrepTime || 15));
+
+    // Add kitchen load factor
+    if (count >= 10) return Math.min(maxOrderPrepTime + 20, 45);
+    if (count >= 7) return maxOrderPrepTime + 15;
+    if (count >= 4) return maxOrderPrepTime + 10;
+    if (count >= 2) return maxOrderPrepTime + 5;
+    return Math.max(maxOrderPrepTime, basePrepTime);
   },
 }));

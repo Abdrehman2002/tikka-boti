@@ -65,7 +65,7 @@ const DashboardLayout: React.FC = () => {
               <ChefHat className="h-5 w-5 text-primary-foreground" />
             </div>
             {sidebarOpen && (
-              <span className="font-display font-bold text-lg">Indian Dosa</span>
+              <span className="font-display font-bold text-lg">Tikka Boti</span>
             )}
           </motion.div>
           <Button
@@ -126,7 +126,7 @@ const DashboardLayout: React.FC = () => {
           <div className="h-10 w-10 rounded-xl gradient-primary flex items-center justify-center">
             <ChefHat className="h-5 w-5 text-primary-foreground" />
           </div>
-          <span className="font-display font-bold text-lg">Indian Dosa</span>
+          <span className="font-display font-bold text-lg">Tikka Boti</span>
         </div>
         <Button
           variant="ghost"

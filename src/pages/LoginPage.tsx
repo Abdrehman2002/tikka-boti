@@ -69,7 +69,7 @@ const LoginPage: React.FC = () => {
                 <ChefHat className="h-10 w-10 text-primary-foreground" />
               </div>
               <h1 className="font-display text-3xl font-bold gradient-primary-text">
-                Indian Dosa
+                Tikka Boti
               </h1>
               <p className="mt-2 text-muted-foreground text-sm">
                 Restaurant Management System
@@ -136,7 +136,7 @@ const LoginPage: React.FC = () => {
 
             {/* Hint */}
             <p className="mt-6 text-center text-xs text-muted-foreground">
-              Demo password: <span className="font-mono text-primary">dosa</span>
+              Demo password: <span className="font-mono text-primary">tikkaboti</span>
             </p>
           </div>
         </motion.div>

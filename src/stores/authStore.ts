@@ -7,7 +7,7 @@ interface AuthState {
   logout: () => void;
 }
 
-const CORRECT_PASSWORD = 'dosa';
+const CORRECT_PASSWORD = 'tikkaboti';
 
 export const useAuthStore = create<AuthState>()(
   persist(
@@ -23,7 +23,7 @@ export const useAuthStore = create<AuthState>()(
       logout: () => set({ isAuthenticated: false }),
     }),
     {
-      name: 'indian-dosa-auth',
+      name: 'tikka-boti-auth',
     }
   )
 );

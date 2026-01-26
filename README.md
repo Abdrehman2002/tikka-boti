@@ -1,4 +1,17 @@
-# Welcome to your Lovable project
+# Tikka Boti Restaurant Dashboard
+
+A comprehensive restaurant management system for Tikka Boti, featuring real-time order management, dynamic prep time calculation, and multi-platform integration with Uber Eats, Glovo, and Bolt Food.
+
+## Features
+
+- **Multi-Platform Orders**: Unified management for Uber Eats, Glovo, and Bolt Food
+- **Dynamic Prep Time**: Automatic calculation based on kitchen load (15-35 minutes)
+- **Complete Menu**: 100+ items across 10 categories (Tikka Boti Special, Breakfast, Starters, Tandoori, Curries, Vegetarian, Naan/Roti, Rice/Biryani, Salads, Drinks/Desserts)
+- **Weekend Offers**: Special deals available 11 AM - 2 PM
+- **Real-Time Analytics**: Revenue tracking, menu performance, and AI insights
+- **Inventory Management**: Smart restocking alerts and trend analysis
+- **Staffing Heatmap**: Optimize scheduling based on demand patterns
+- **Live Kitchen View**: Real-time order queue and preparation tracking
 
 ## Project info
 
