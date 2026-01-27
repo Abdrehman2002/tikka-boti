@@ -27,27 +27,27 @@ const MenuIntelligencePage: React.FC = () => {
   const aiSuggestions = [
     {
       type: 'promote',
-      title: 'Promote Shrimp Bowl',
-      description: 'High margin (42%) and 32% demand increase. Consider featuring in platform banners.',
+      title: 'Promote Prawns Masala Plate',
+      description: 'Highest profit margin (68%) and 25% demand increase. Feature as premium weekend special on platform banners.',
       impact: 'high',
     },
     {
-      type: 'remove',
-      title: 'Consider Removing Vada',
-      description: 'Consistent 22% decline over 4 weeks. Low margin (18%) and minimal repeat orders.',
-      impact: 'medium',
-    },
-    {
       type: 'bundle',
-      title: 'Create Combo Deal',
-      description: 'Masala Dosa + Butter Chicken Dosa ordered together 34% of the time. Bundle discount could increase order value.',
+      title: 'Create Curry + Naan Combo',
+      description: 'Tikka Boti Special Karahi + 2 Naan ordered together 45% of the time. €1 discount bundle could boost order value 12%.',
       impact: 'high',
     },
     {
       type: 'price',
-      title: 'Price Optimization',
-      description: 'Cheese Dosa has low price elasticity. A $1 increase would improve margins without affecting volume.',
+      title: 'Butter Chicken Pricing',
+      description: 'Butter Chicken orders down 8%. Reduce Full portion from €18 to €16 or create combo with Garlic Naan to boost sales.',
       impact: 'medium',
+    },
+    {
+      type: 'bundle',
+      title: 'Mix Platter Upsell',
+      description: 'Mix Platter orders 25% higher when suggested with curries. Train staff for upselling - potential €2,800/month boost.',
+      impact: 'high',
     },
   ];
 
@@ -79,7 +79,7 @@ const MenuIntelligencePage: React.FC = () => {
                   <div>
                     <p className="font-medium">{item.name}</p>
                     <p className="text-xs text-muted-foreground">
-                      {item.orders} orders • ${item.revenue} revenue
+                      {item.orders} orders • €{item.revenue} revenue
                     </p>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ const MenuIntelligencePage: React.FC = () => {
                   <div>
                     <p className="font-medium">{item.name}</p>
                     <p className="text-xs text-muted-foreground">
-                      {item.orders} orders • ${item.revenue} revenue
+                      {item.orders} orders • €{item.revenue} revenue
                     </p>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ const MenuIntelligencePage: React.FC = () => {
                   borderRadius: '8px',
                 }}
                 formatter={(value: number, name: string) => [
-                  name === 'orders' ? `${value} orders` : `$${value}`,
+                  name === 'orders' ? `${value} orders` : `€${value}`,
                   name === 'orders' ? 'Orders' : 'Revenue',
                 ]}
               />
@@ -193,8 +193,8 @@ const MenuIntelligencePage: React.FC = () => {
                   className={`text-xs px-2 py-1 rounded-full ${
                     suggestion.type === 'promote'
                       ? 'bg-success/10 text-success'
-                      : suggestion.type === 'remove'
-                      ? 'bg-destructive/10 text-destructive'
+                      : suggestion.type === 'price'
+                      ? 'bg-warning/10 text-warning'
                       : 'bg-primary/10 text-primary'
                   }`}
                 >

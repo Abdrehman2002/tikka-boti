@@ -28,25 +28,39 @@ const InventoryAIPage: React.FC = () => {
 
   const forecasts = [
     {
-      ingredient: 'Shrimp',
+      ingredient: 'Chicken (Boneless)',
       alert: 'Demand Surge Expected',
-      description: 'Friday shrimp demand increases by 32%. Current stock will run out by 6 PM. Recommend restocking by Thursday EOD.',
+      description: 'Weekend Tikka Boti Special and Chicken Boneless Handi orders surge 38%. Current stock will run out by Friday 8 PM. Restock by Thursday evening.',
       urgency: 'critical',
       action: 'Restock immediately',
     },
     {
-      ingredient: 'Potato Masala',
-      alert: 'Stock Running Low',
-      description: 'At current consumption rate, stock depletes in 2 days. Weekend demand will accelerate this.',
+      ingredient: 'Tikka Masala Spices Mix',
+      alert: 'Critical Stock Level',
+      description: 'At current usage rate, spice mix depletes in 1.5 days. Essential for all Tikka Boti Special items. Weekend rush requires immediate restocking.',
+      urgency: 'critical',
+      action: 'Order today',
+    },
+    {
+      ingredient: 'Prawns (Fresh)',
+      alert: 'Weekend Premium Demand',
+      description: 'Prawns Masala orders increase 32% on weekends. Current stock insufficient for Friday-Sunday. Order fresh batch by Thursday EOD.',
+      urgency: 'critical',
+      action: 'Restock by Thursday',
+    },
+    {
+      ingredient: 'Rice (Basmati)',
+      alert: 'Biryani Peak Demand',
+      description: 'Biryani orders peak 7-9 PM daily. Rice consumption up 22% this week. Stock depletes in 3 days without replenishment.',
       urgency: 'warning',
       action: 'Order by Wednesday',
     },
     {
-      ingredient: 'Sambar',
-      alert: 'Increased Consumption',
-      description: 'Sambar usage up 18% this week due to Idli Sambar promotion. Adjust weekly order quantity.',
+      ingredient: 'Beef (Raw)',
+      alert: 'Increasing Consumption',
+      description: 'Beef Seekh Kebab and Beef Reshmi Karahi usage up 15% due to Mix Platter popularity. Adjust weekly order quantity.',
       urgency: 'info',
-      action: 'Increase order by 15L',
+      action: 'Increase order by 10kg',
     },
   ];
 
