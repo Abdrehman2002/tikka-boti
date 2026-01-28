@@ -95,10 +95,8 @@ const OrderCard: React.FC<{ order: Order; onAccept: () => void; onReject: () => 
 
 const AcceptedOrderCard: React.FC<{ order: Order; index: number; prepTime: number }> = ({ order, index, prepTime }) => {
   const platform = platformConfig[order.platform];
-  // Calculate estimated time based on position in queue
-  // First order gets base prep time, each subsequent order adds time
-  const estimatedTime = prepTime - Math.floor(index * 2);
-  const displayTime = Math.max(estimatedTime, 5); // Minimum 5 minutes
+  // All orders show the same static prep time based on current kitchen load
+  const displayTime = prepTime;
 
   return (
     <motion.div
@@ -134,7 +132,7 @@ const AcceptedOrderCard: React.FC<{ order: Order; index: number; prepTime: numbe
       </div>
       <div className="mt-2 flex items-center justify-between text-xs">
         <span className="text-muted-foreground">
-          {order.customerName} • ${order.total.toFixed(2)}
+          {order.customerName} • €{order.total.toFixed(2)}
         </span>
         <span className="flex items-center gap-1 text-primary font-medium">
           <Clock className="h-3 w-3" />

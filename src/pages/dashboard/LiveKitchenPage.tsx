@@ -137,7 +137,8 @@ const LiveKitchenPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {acceptedOrders.map((order, index) => {
               const platform = platformConfig[order.platform];
-              const estimatedTime = prepTime - Math.floor(index * 2);
+              // All orders show the same static prep time
+              const displayTime = prepTime;
 
               return (
                 <motion.div
@@ -177,7 +178,7 @@ const LiveKitchenPage: React.FC = () => {
                     <span className="text-muted-foreground">{order.customerName}</span>
                     <span className="flex items-center gap-1 text-primary font-medium">
                       <Clock className="h-3 w-3" />
-                      ~{Math.max(estimatedTime, 5)} min
+                      ~{displayTime} min
                     </span>
                   </div>
                 </motion.div>
