@@ -55,21 +55,22 @@ export const useOrdersStore = create<OrdersState>((set, get) => ({
       const newAccepted = [updatedOrder, ...state.acceptedOrders];
       const newPending = state.orders.filter((o) => o.id !== orderId);
 
-      // Calculate new prep time based on:
-      // 1. Base prep time from the order items (estimatedPrepTime)
-      // 2. Kitchen load multiplier based on number of accepted orders
-      const basePrepTime = order.estimatedPrepTime || 15;
-      let prepTime = basePrepTime;
+      // Static prep time based on total accepted orders
+      // 1-4 orders: 15 min
+      // 5-8 orders: 20 min
+      // 9-12 orders: 25 min
+      // 13+ orders: 30 min
+      let prepTime = 15;
+      const orderCount = newAccepted.length;
 
-      // Add kitchen load factor
-      if (newAccepted.length >= 10) {
-        prepTime = Math.min(basePrepTime + 20, 45); // Max 45 min
-      } else if (newAccepted.length >= 7) {
-        prepTime = basePrepTime + 15;
-      } else if (newAccepted.length >= 4) {
-        prepTime = basePrepTime + 10;
-      } else if (newAccepted.length >= 2) {
-        prepTime = basePrepTime + 5;
+      if (orderCount >= 13) {
+        prepTime = 30;
+      } else if (orderCount >= 9) {
+        prepTime = 25;
+      } else if (orderCount >= 5) {
+        prepTime = 20;
+      } else {
+        prepTime = 15;
       }
 
       return {
@@ -98,17 +99,15 @@ export const useOrdersStore = create<OrdersState>((set, get) => ({
     const { acceptedOrders, basePrepTime } = get();
     const count = acceptedOrders.length;
 
-    // If no orders, return base time
+    // Static prep time based on total accepted orders
+    // 1-4 orders: 15 min
+    // 5-8 orders: 20 min
+    // 9-12 orders: 25 min
+    // 13+ orders: 30 min
     if (count === 0) return basePrepTime;
-
-    // Get the highest prep time from current orders
-    const maxOrderPrepTime = Math.max(...acceptedOrders.map(o => o.estimatedPrepTime || 15));
-
-    // Add kitchen load factor
-    if (count >= 10) return Math.min(maxOrderPrepTime + 20, 45);
-    if (count >= 7) return maxOrderPrepTime + 15;
-    if (count >= 4) return maxOrderPrepTime + 10;
-    if (count >= 2) return maxOrderPrepTime + 5;
-    return Math.max(maxOrderPrepTime, basePrepTime);
+    if (count >= 13) return 30;
+    if (count >= 9) return 25;
+    if (count >= 5) return 20;
+    return 15;
   },
 }));

@@ -196,32 +196,32 @@ const LiveKitchenPage: React.FC = () => {
       >
         <h3 className="font-display font-semibold mb-3 flex items-center gap-2">
           <AlertTriangle className="h-5 w-5 text-primary" />
-          Dynamic Prep Time Intelligence
+          Static Prep Time System
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
           <div className="bg-success/10 rounded-lg p-4">
-            <p className="font-medium text-success">1-3 Orders</p>
-            <p className="text-2xl font-bold font-display mt-1">+0 min</p>
-            <p className="text-xs text-muted-foreground mt-1">Base item time</p>
+            <p className="font-medium text-success">1-4 Orders</p>
+            <p className="text-2xl font-bold font-display mt-1">15 min</p>
+            <p className="text-xs text-muted-foreground mt-1">Normal capacity</p>
           </div>
           <div className="bg-success/10 rounded-lg p-4">
-            <p className="font-medium text-success">4-6 Orders</p>
-            <p className="text-2xl font-bold font-display mt-1">+10 min</p>
+            <p className="font-medium text-success">5-8 Orders</p>
+            <p className="text-2xl font-bold font-display mt-1">20 min</p>
             <p className="text-xs text-muted-foreground mt-1">Moderate load</p>
           </div>
           <div className="bg-warning/10 rounded-lg p-4">
-            <p className="font-medium text-warning">7-9 Orders</p>
-            <p className="text-2xl font-bold font-display mt-1">+15 min</p>
+            <p className="font-medium text-warning">9-12 Orders</p>
+            <p className="text-2xl font-bold font-display mt-1">25 min</p>
             <p className="text-xs text-muted-foreground mt-1">Busy period</p>
           </div>
           <div className="bg-destructive/10 rounded-lg p-4">
-            <p className="font-medium text-destructive">10+ Orders</p>
-            <p className="text-2xl font-bold font-display mt-1">+20 min</p>
+            <p className="font-medium text-destructive">13+ Orders</p>
+            <p className="text-2xl font-bold font-display mt-1">30 min</p>
             <p className="text-xs text-muted-foreground mt-1">Peak capacity</p>
           </div>
         </div>
         <p className="text-xs text-muted-foreground mt-4">
-          Prep times are based on menu item complexity (5-35 min) plus kitchen load. Tikka Boti Special items take 30 min, while drinks/salads are ready in 2-5 min. Times sync automatically to all delivery platforms.
+          Static prep times based on total accepted orders in queue. Times automatically sync to Uber Eats, Glovo, and Bolt Food platforms to manage customer expectations during different kitchen load levels.
         </p>
       </motion.div>
     </div>
